@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { addDoc, collection, query, onSnapshot } from "@firebase/firestore"
 import { firestore } from "../firebase_setup/firebase"
-// import { addDoc, collection, setDoc, deleteDoc, doc, query, onSnapshot } from "firebase/firestore";
 
 const Text = () => {
     const [text, setText] = useState("");
@@ -49,8 +48,8 @@ const Text = () => {
         getData()
     }, [])
     return (
-        <div className="md:flex gap-8">
-            <div className="mb-8 md:flex">
+        <div className="">
+            <div className="mb-8">
                 <div className="mb-6">
                     <label htmlFor="text" className="block mb-2 text-sm font-medium text-gray-900">Text</label>
                     <input type="text" id="text" name="text" value={text} onChange={(e) => setText(e.target.value)}

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PasswordChecklist from "react-password-checklist"
+import { addDoc, collection } from "@firebase/firestore"
+import { firestore } from "../firebase_setup/firebase"
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -17,7 +19,26 @@ const Signup = () => {
     }
 
     const handleSignup = async => {
-        navigate('/text')
+        if(email === "" || password === ""){
+            setDisabled(true)
+        }
+        else{
+            const ref = collection(firestore, "users");
+
+            let data = {
+                email: email,
+                password: password
+            }
+
+            try{
+                addDoc(ref, data)
+            } catch(err) {
+                console.log(err)
+            }
+
+            setDisabled(false)
+            navigate('/notifications')
+        }
     }
 
     return (
