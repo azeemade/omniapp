@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 const Calculator = () => {
     const [nums, setNums] = useState({
-        num1: "", num2: "", operator: ""
+        num1: "", num2: "", operator: "addition"
     });
     const [error, setError] = useState("");
 
@@ -27,8 +27,9 @@ const Calculator = () => {
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
                         <span className="text-xs text-red-500">{error}</span>
                     </div>
-                    <div className="">
-                        <select name="op" id="op" value={nums.operator} onChange={(e) => setNums({...nums, operator: e.target.value})}>
+                    <div className="flex justify-end">
+                        <select name="op" id="op" value={nums.operator} onChange={(e) => setNums({...nums, operator: e.target.value})}
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2">
                             <option value="addition">addition</option>
                             <option value="multiplication">multiplication</option>
                             <option value="subtraction">subtraction</option>
