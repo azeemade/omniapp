@@ -7,7 +7,8 @@ const Photo = () => {
     const [error, setError] = useState("");
     // const [percent, setPercent] = useState(0);
 
-    const handleSend = async => {
+    const handleSend = (e) => {
+        e.preventDefault();
         if(!photo) {
             setError('Photo field cannot be empty')
         }
@@ -50,7 +51,7 @@ const Photo = () => {
                     <span className="text-xs text-red-500">{error}</span>
                 </div>
                 <div className="flex justify-center">
-                    <button type="submit" onClick={() => handleSend()} 
+                    <button type="submit" onClick={(e) => handleSend(e)} 
                         className="bg-indigo-600 hover:bg-blue-800 text-white text-sm font-medium py-2 px-4 rounded-lg">
                         Send
                     </button>

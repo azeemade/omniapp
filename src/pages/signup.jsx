@@ -18,26 +18,28 @@ const Signup = () => {
         setEmail(e.target.value)
     }
 
-    const handleSignup = async => {
+    const handleSignup = async(e) => {
+        e.preventDefault();
         if(email === "" || password === ""){
             setDisabled(true)
         }
         else{
-            // const ref = collection(firestore, "users");
+            const ref = collection(firestore, "users");
 
-            // let data = {
-            //     email: email,
-            //     password: password
-            // }
+            let data = {
+                user: {
+                    email: email,
+                    password: password
+                }
+            }
+             addDoc(ref, data)
+                .then( () =>{
+                    setDisabled(false);
+                    navigate('/notifications');}
+                )
+                .catch((err) => console.log(err)) 
 
-            // try{
-            //     addDoc(ref, data)
-            // } catch(err) {
-            //     console.log(err)
-            // }
-
-            setDisabled(false)
-            navigate('/notifications')
+            
         }
     }
 
@@ -75,7 +77,7 @@ const Signup = () => {
                             </p>
                         </div>
                         <div className="flex justify-center">
-                            <button type="submit" onClick={() => handleSignup()}  disabled={disabled}
+                            <button type="submit" onClick={(e) => handleSignup(e)}  disabled={disabled}
                                 className="bg-indigo-600 enabled:hover:bg-blue-800 disabled:opacity-75  text-white text-sm font-medium py-2 px-4 rounded-lg">Sign
                                 up</button>
                         </div>

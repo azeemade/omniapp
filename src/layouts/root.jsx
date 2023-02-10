@@ -29,7 +29,7 @@ export default function Root() {
             </div>
         } 
         <div className="md:px-8 md:ml-[88px]">
-          {notification && <Alert message="You have a notification"/>}
+          {/* {notification && <Alert message="You have a notification"/> */}
           <Outlet />
         </div>
         {
