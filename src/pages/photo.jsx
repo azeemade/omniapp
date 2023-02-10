@@ -16,9 +16,9 @@ const Photo = () => {
             const uploadTask = uploadBytesResumable(storageRef, photo);
 
             uploadTask.on("state_changed", (snapshot) => {
-                const percent = Math.round(
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                );
+                // const percent = Math.round(
+                //     (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                // );
                 
                 // update progress
                 // setPercent(percent);
@@ -62,8 +62,7 @@ const Photo = () => {
                     {
                         photos.map((data, index) => 
                             <div key={index} className="p-2 border-gray-200">
-                                {/* <p className="text-sm ">{data}</p> */}
-                                <img src={data} alt="received image" className="w-full rounded" />
+                                <img src={data} alt={`gallery pic ${index}`} className="w-full rounded" />
                             </div>
                         )
                     }

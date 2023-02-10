@@ -23,18 +23,18 @@ const Signup = () => {
             setDisabled(true)
         }
         else{
-            const ref = collection(firestore, "users");
+            // const ref = collection(firestore, "users");
 
-            let data = {
-                email: email,
-                password: password
-            }
+            // let data = {
+            //     email: email,
+            //     password: password
+            // }
 
-            try{
-                addDoc(ref, data)
-            } catch(err) {
-                console.log(err)
-            }
+            // try{
+            //     addDoc(ref, data)
+            // } catch(err) {
+            //     console.log(err)
+            // }
 
             setDisabled(false)
             navigate('/notifications')

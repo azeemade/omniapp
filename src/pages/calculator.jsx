@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { calculate } from "../utils/calculate";
 const Calculator = () => {
     const [nums, setNums] = useState({
