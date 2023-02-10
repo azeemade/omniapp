@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { useState } from "react";
-import Alert from "../components/Alert";
+// import { useState } from "react";
+// import Alert from "../components/Alert";
 import  Footer  from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
