@@ -6,6 +6,7 @@ import Photo from "../pages/photo";
 import Text from "../pages/text";
 import Calculator from "../pages/calculator";
 import Root from "../layouts/root";
+import { ProtectedRoute } from "../utils/ProtectedRoute";
 
 export const router = createBrowserRouter([
     {
@@ -18,19 +19,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/notifications",
-                element: <Notification />,
+                element: <ProtectedRoute><Notification /></ProtectedRoute>,
             },
             {
                 path: "/photo",
-                element: <Photo />,
+                element: <ProtectedRoute><Photo /></ProtectedRoute>,
             },
             {
                 path: "/text",
-                element: <Text />,
+                element: <ProtectedRoute><Text /></ProtectedRoute>,
             },
             {
                 path: "/calculator",
-                element: <Calculator />,
+                element: <ProtectedRoute><Calculator /></ProtectedRoute>,
             }
         ]
     },

@@ -15,7 +15,7 @@ const Text = () => {
             setError('text cannot be empty')
         }
         else {
-            setLoad(true)
+            // setLoad(true)
             const ref = collection(firestore, "chats");
 
             let data = {
@@ -27,7 +27,7 @@ const Text = () => {
             } catch(err) {
                 console.log(err)
             }
-            setLoad(false)
+            // setLoad(false)
             setText("")
         }
     }

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import storage from "../firebase_setup/firebase"
+import { ref, uploadBytesResumable, getDownloadURL, listAll, getStorage } from "firebase/storage";
+// import storage from "../firebase_setup/firebase"
+
 const Photo = () => {
     const [photo, setPhoto] = useState("");
     const [photos, setPhotos] = useState([]);
     const [error, setError] = useState("");
+    const storage = getStorage();
+    const listRef = ref(storage, 'files');
     // const [percent, setPercent] = useState(0);
 
     const handleSend = (e) => {
@@ -39,11 +42,30 @@ const Photo = () => {
     }
 
     useEffect( () => {
+        // const images = storage().ref().child('files');
+//   const image = images.child('image1');
+        // images.map((image) => image.getDownloadURL().then((url) => { console.log(url) }));
+        listAll(listRef)
+        .then((res) => {
+            res.prefixes.forEach((folderRef) => {
+                console.log('folder', folderRef);
 
+            // All the prefixes under listRef.
+            // You may call listAll() recursively on them.
+            });
+            res.items.forEach((itemRef) => {
+                itemRef.getDownloadURL().then((url) => { console.log(url) });
+                
+                // console.log(itemRef);
+            // All the items under listRef.
+            });
+        }).catch((error) => {
+            // Uh-oh, an error occurred!
+        });
     }, [])
     return (
-        <div className="md:flex gap-8">
-            <div className="mb-8 md:flex">
+        <div className="">
+            <div className="mb-8">
                 <div className="mb-6">
                     <label htmlFor="photo" className="block mb-2 text-sm font-medium text-gray-900">Photo</label>
                     <input type="file" id="photo" name="photo" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])}
