@@ -16,7 +16,7 @@ export default function Root() {
               <Sidebar />
             </div>
         } 
-        <div className="md:px-8 md:ml-[88px]">
+        <div className="md:px-8 md:ml-[88px] sm:mb-[52px]">
           <Outlet />
         </div>
         {

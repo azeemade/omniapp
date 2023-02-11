@@ -15,7 +15,7 @@ const Footer = () => {
     }, [])
 
     return (
-        <footer className="fixed bottom-0 left-0 right-0 border-0 border-t pt-2 border-gray-300">
+        <footer className="fixed bottom-0 left-0 right-0 border-0 border-t pt-2 bg-white z-50 border-gray-300">
             <div className="flex md:hidden justify-between px-2">
                 <div>
                     <Link to={`/notifications`} className={`flex flex-col items-center text-gray-400 ${ pathname === '/notifications' ? "text-indigo-600" : "text-gray-400" }`}>
