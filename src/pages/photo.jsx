@@ -6,7 +6,6 @@ const Photo = () => {
     const [photo, setPhoto] = useState(null);
     const [photos, setPhotos] = useState([]);
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
     // const [percent, setPercent] = useState(0);
 
     const handleUpdate = async (e, data) => {
@@ -61,7 +60,6 @@ const Photo = () => {
                 .then((res) => {
                     res.items.forEach((item) => {
                         getDownloadURL(item).then((url) => {
-                                console.log('url', url);
                             setPhotos( p => [...p, url]);
                         });
                     });
@@ -69,10 +67,7 @@ const Photo = () => {
                     // Uh-oh, an error occurred!
                 });
         }
-
-        setLoading(true);
         getImages()
-        setLoading(false);
     }, [])
     return (
         <div className="">
@@ -93,7 +88,6 @@ const Photo = () => {
             <div>
                 <p className="text-lg text-indigo-600 text-center mt-8 border-0 border-b border-gray-200">Gallery</p>
                 <div className="columns-2 gap-4 mt-3">
-                    { loading && <span>Loading...</span>}
                     {
                         photos.map((data, index) => 
                             <div key={index} className="p-2 border-gray-200">

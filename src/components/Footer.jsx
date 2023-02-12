@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { getData as notification } from '../utils/notification'
+import { notify } from '../utils/notification'
 
 const Footer = () => {
     const pathname = useLocation().pathname
-
     const [info, setInfo] = useState(false)
-    const [ids, setIds] = useState([])
 
     useEffect(() => {
-        const notificationSnapshot = notification();
-        setInfo(notificationSnapshot.databaseInfo === undefined ? false : notificationSnapshot.databaseInfo);
-        setIds(notificationSnapshot.dataIds);
+        setInfo(notify(null, 'get'));
     }, [])
 
     return (
@@ -20,7 +16,7 @@ const Footer = () => {
                 <div>
                     <Link to={`/notifications`} className={`flex flex-col items-center text-gray-400 ${ pathname === '/notifications' ? "text-indigo-600" : "text-gray-400" }`}>
                         <div className="inline-flex relative w-fit">
-                            <div id={ids} className={`absolute hidden top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 
+                            <div className={`absolute hidden top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 
                             skew-y-0 scale-x-100 scale-y-100 p-1.5 text-xs bg-red-600 rounded-full z-10 ${ info && '!inline-block' }`}></div>
                             <i className="bi bi-bell"></i>
                         </div>

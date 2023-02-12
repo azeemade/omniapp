@@ -1,6 +1,6 @@
 const Alert = (props) => {
     return (
-        <div id="alert-1" className="flex p-4 mb-4 text-blue-800 rounded-lg bg-blue-50" role="alert">
+        <div className="flex p-4 mb-4 text-blue-800 rounded-lg bg-blue-50" role="alert">
             <i className="bi bi-bell-fill"></i>
             <span className="sr-only">Info</span>
             <div className="ml-3 text-sm font-medium">
