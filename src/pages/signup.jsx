@@ -51,7 +51,7 @@ const Signup = () => {
 
     return (
         <>
-            <div className="flex flex-col justify-center items-center">
+            <div className="md:flex flex-col justify-center items-center">
                 <div className="md:w-[440px] px-2 md:px-4 py-8 bg-white rounded">
                     <div>
                         <p className="text-center text-xl font-semibold whitespace-nowrap text-dark mb-3">Omniapp</p>
